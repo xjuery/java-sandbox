@@ -1,0 +1,17 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="KAFKA" class="org.example.KafkaLogbackAppender">
+        <bootstrapServers>localhost:9092</bootstrapServers>
+        <topic>mymetrics</topic>
+    </appender>
+
+    <root level="ERROR">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="KAFKA"/>
+    </root>
+</configuration>
